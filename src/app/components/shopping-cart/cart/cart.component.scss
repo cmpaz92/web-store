@@ -10,22 +10,27 @@
     width: 100%;
     z-index: 100;
   }
+
   .cartButton {
     margin: auto;
     display: block;
   }
+
   .cart-list-inner {
     height: 160px;
     border: 1px solid #333;
     background-color: white;
   }
+
   .empty-cart {
     height: 100%;
     text-align: center;
+
     h5 {
       padding: 50px;
     }
   }
+
   .cart-total {
     text-align: right;
     font-size: 1.1rem;

@@ -6,9 +6,9 @@ import {RegisterComponent} from "./modules/auth/pages/register/register.componen
 
 import {ShoppingCartComponent} from "./components/shopping-cart/shopping-cart.component";
 import {ProductDetailComponent} from "./components/shopping-cart/product-detail/product-detail.component";
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { CheckoutComponent } from './components/shopping-cart/checkout/checkout.component';
-import { LoggedInGuard } from './modules/auth/guards/logged-in/logged-in.guard';
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {CheckoutComponent} from './components/shopping-cart/checkout/checkout.component';
+import {LoggedInGuard} from './modules/auth/guards/logged-in/logged-in.guard';
 
 
 const routes: Routes = [

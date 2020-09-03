@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ProductItemComponent} from './product-item.component';
-import { RouterModule } from '@angular/router';
+import {RouterModule} from '@angular/router';
 
 describe('ProductItemComponent', () => {
   let component: ProductItemComponent;

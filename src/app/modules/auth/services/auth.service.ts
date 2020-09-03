@@ -25,7 +25,7 @@ export interface SignupResponse {
 
 export class AuthService {
   isLoginSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
-  
+
   constructor(private httpClient: HttpClient) {
   }
 
@@ -51,7 +51,7 @@ export class AuthService {
         return throwError(error);
       }),
     );
-    
+
   }
 
   signup(username: string, password: string) {
@@ -124,29 +124,29 @@ export class AuthService {
     return this.getToken() != null;
   }
 
-  isLoggedInObs() : Observable<boolean> {
+  isLoggedInObs(): Observable<boolean> {
     return this.isLoginSubject.asObservable();
   }
 
   setToken(authToken: string, user: any, id: string) {
     console.log('storing token', authToken);
-    localStorage.setItem('loggedUser', JSON.stringify({'name' : user, 'id' : id, 'token' : authToken}));
+    localStorage.setItem('loggedUser', JSON.stringify({'name': user, 'id': id, 'token': authToken}));
   }
 
   getID() {
-    let userID= JSON.parse(localStorage.getItem('loggedUser'));
+    let userID = JSON.parse(localStorage.getItem('loggedUser'));
     return userID ? userID.id : null;
   }
 
   getUsername() {
-    let userName= JSON.parse(localStorage.getItem('loggedUser'));
+    let userName = JSON.parse(localStorage.getItem('loggedUser'));
     return userName ? userName.name : null;
   }
 
   getToken() {
     let authToken = JSON.parse(localStorage.getItem('loggedUser'));
     return authToken ? authToken.token : null;
-   // return authToken.token || null;
+    // return authToken.token || null;
   }
 
   removeToken() {

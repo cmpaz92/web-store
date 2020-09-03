@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/modules/auth/services/auth.service';
-import { Cart } from 'src/app/models/cart.model';
-import { MessengerService } from 'src/app/services/messenger.service';
-import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/models/app-state.model';
-import { Product } from 'src/app/models/product.model';
-import { AddToCart, RemoveFromCart } from 'src/app/store/actions';
+import {Component, OnInit} from '@angular/core';
+import {AuthService} from 'src/app/modules/auth/services/auth.service';
+import {Cart} from 'src/app/models/cart.model';
+import {MessengerService} from 'src/app/services/messenger.service';
+import {Store} from '@ngrx/store';
+import {AppState} from 'src/app/models/app-state.model';
+import {Product} from 'src/app/models/product.model';
+import {AddToCart, RemoveFromCart} from 'src/app/store/actions';
 
 @Component({
   selector: 'app-checkout',
@@ -17,7 +17,8 @@ export class CheckoutComponent implements OnInit {
   cartItems: Array<Cart> = []
   cartTotal = 0;
 
-  constructor(private authService: AuthService, private msg: MessengerService, private store: Store<AppState>) { }
+  constructor(private authService: AuthService, private msg: MessengerService, private store: Store<AppState>) {
+  }
 
   ngOnInit(): void {
     this.authService.isLoggedIn()

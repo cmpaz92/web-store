@@ -1,8 +1,8 @@
 import {async, ComponentFixture, TestBed, ComponentFixtureNoNgZone} from '@angular/core/testing';
 
 import {CartItemComponent} from './cart-item.component';
-import { Cart } from 'src/app/models/cart.model';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import {Cart} from 'src/app/models/cart.model';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('CartItemComponent', () => {
   let component: CartItemComponent;
@@ -17,7 +17,7 @@ describe('CartItemComponent', () => {
   }));
 
   beforeEach(() => {
-    const cartItem = new Cart(123, 'item1', 10, 1) 
+    const cartItem = new Cart(123, 'item1', 10, 1)
     this.component.cartItem = cartItem
     fixture = TestBed.createComponent(CartItemComponent);
     component = fixture.componentInstance;

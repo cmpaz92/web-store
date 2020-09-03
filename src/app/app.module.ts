@@ -18,14 +18,14 @@ import {ProductListComponent} from './components/shopping-cart/product-list/prod
 import {CartComponent} from './components/shopping-cart/cart/cart.component';
 import {CartItemComponent} from './components/shopping-cart/cart/cart-item/cart-item.component';
 import {ProductItemComponent} from './components/shopping-cart/product-list/product-item/product-item.component';
-import {HttpClientModule } from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {AppRoutingModule} from "./app-routing.module";
 import {AuthModule} from "./modules/auth/auth.module";
 import {ProductDetailComponent} from './components/shopping-cart/product-detail/product-detail.component';
 import {RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import { CheckoutComponent } from './components/shopping-cart/checkout/checkout.component';
-import { ProductFormComponent } from './product-form/product-form.component';
+import {CheckoutComponent} from './components/shopping-cart/checkout/checkout.component';
+import {ProductFormComponent} from './product-form/product-form.component';
 
 @NgModule({
   declarations: [
