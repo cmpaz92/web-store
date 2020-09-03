@@ -24,6 +24,7 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
+    canActivate: [LoggedInGuard],
   },
   {path: '**', component: NotFoundComponent},
 ];

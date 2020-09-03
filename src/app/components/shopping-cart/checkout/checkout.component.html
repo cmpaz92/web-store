@@ -1,15 +1,53 @@
-<!-- <div *ngIf="cartItems.length > 0">
-    <ul class="list-group">
-      <li *ngFor="let item of cartItems" class="list-group-item">
-        <app-cart-item [cartItem]="item"></app-cart-item>
-        <button (click)="deleteItem(item._id)" class="btn btn-danger" type="button">Delete</button>
-      </li>
-      <li class="list-group-item active">
-        Total: {{cartTotal}}
-      </li>
-    </ul>
-  </div> -->
+<div *ngIf="cartItems.length > 0">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">/</th>
+            </tr>
+        </thead>
+        <tbody>            
+            <tr *ngFor="let item of cartItems" >
+                <td class="product-detail">
+                    <app-cart-item [cartItem]="item"></app-cart-item>
+                </td>
+                <td class="product-remove">
+                    <button (click)="deleteItem(item._id)" class="btn btn-danger" type="button">Delete</button>
+                </td>
+            </tr>
+            <tr class="table-success">
+                <td>
+                    <button class="checkout btn btn-primary" type="button">Buy</button>
+                </td>
+                <td>
+                    Total: {{cartTotal}}
+                </td>
+               
+            </tr>
+        </tbody>
+    </table>
 
-  <div *ngIf="user">
-      logged in
-  </div>
+    <div style="
+    background-color: blue;
+"><span style="
+    width: 40%;
+    display: inline-block;
+">Product</span> <span style="
+    width: 40%;
+    display: inline-block;
+    ">Price</span> </div>
+    <ul class="list-group">
+        <li *ngFor="let item of cartItems" class="list-group-item">
+            <app-cart-item [cartItem]="item"></app-cart-item>
+            <button (click)="deleteItem(item._id)" class="btn btn-danger" type="button">Delete</button>
+        </li>
+        <li class="list-group-item active">
+            Total: {{cartTotal}}
+        </li>
+    </ul>
+</div>
+
+<div *ngIf="user">
+    logged in
+</div>

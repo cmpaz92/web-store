@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {catchError, map, tap} from 'rxjs/operators';
-import {Observable, of, throwError} from 'rxjs';
+import {Observable, of, throwError, BehaviorSubject} from 'rxjs';
 
 export interface CredentialsDto {
   username: string;
@@ -24,7 +24,8 @@ export interface SignupResponse {
 })
 
 export class AuthService {
-
+  isLoginSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
+  
   constructor(private httpClient: HttpClient) {
   }
 
@@ -39,10 +40,9 @@ export class AuthService {
     ).pipe(
       tap(response => {
         // if the login was successful the server responds with an auth token which will be saved
-        console.log(response.user);
-        this.setToken(response.token, response.user);
-        sessionStorage.setItem('loggedUser', response.user.username);
-        console.log('response', response);
+        console.log(response)
+        this.setToken(response.token, response.user.username, response.user._id);
+        this.isLoginSubject.next(true);
       }),
       catchError(error => {
         // if an error occurs it will be logged ans passed along as error
@@ -51,6 +51,7 @@ export class AuthService {
         return throwError(error);
       }),
     );
+    
   }
 
   signup(username: string, password: string) {
@@ -65,8 +66,9 @@ export class AuthService {
       tap(response => {
         // if the login was successful the server responds with an auth token which will be saved
         console.log(response.token)
-        this.setToken(response.token, response.user);
+        this.setToken(response.token, response.user.username, response.user._id);
         console.log('response', response.token);
+        this.isLoginSubject.next(true);
       }),
       catchError(error => {
         // if an error occurs it will be logged ans passed along as error
@@ -84,6 +86,7 @@ export class AuthService {
 
   logout() {
     // performing any logout logic as observable
+    this.isLoginSubject.next(false);
     return new Observable(observer => {
       this.removeToken();
       observer.next();
@@ -121,24 +124,33 @@ export class AuthService {
     return this.getToken() != null;
   }
 
-  setToken(authToken: string, user: any) {
+  isLoggedInObs() : Observable<boolean> {
+    return this.isLoginSubject.asObservable();
+  }
+
+  setToken(authToken: string, user: any, id: string) {
     console.log('storing token', authToken);
-    console.log(user._id);
-    localStorage.setItem('token', authToken);
-    localStorage.setItem('id', user._id);
+    localStorage.setItem('loggedUser', JSON.stringify({'name' : user, 'id' : id, 'token' : authToken}));
   }
 
   getID() {
-    return localStorage.getItem('id') || null;
+    let userID= JSON.parse(localStorage.getItem('loggedUser'));
+    return userID ? userID.id : null;
+  }
+
+  getUsername() {
+    let userName= JSON.parse(localStorage.getItem('loggedUser'));
+    return userName ? userName.name : null;
   }
 
   getToken() {
-    return localStorage.getItem('token') || null;
+    let authToken = JSON.parse(localStorage.getItem('loggedUser'));
+    return authToken ? authToken.token : null;
+   // return authToken.token || null;
   }
 
   removeToken() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('id');
+    localStorage.removeItem('loggedUser');
   }
 
 
@@ -150,6 +162,6 @@ export class AuthService {
       };
     }
 
-    return this.httpClient.get(`${environment.apiUrl}/${this.getID()}`, httpOptions);
+    return this.httpClient.get(`${environment.apiUrl}/user/${this.getID()}`, httpOptions);
   }
 }

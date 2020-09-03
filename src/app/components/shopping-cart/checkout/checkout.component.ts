@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
+import { Cart } from 'src/app/models/cart.model';
+import { MessengerService } from 'src/app/services/messenger.service';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/models/app-state.model';
+import { Product } from 'src/app/models/product.model';
+import { AddToCart, RemoveFromCart } from 'src/app/store/actions';
 
 @Component({
   selector: 'app-checkout',
@@ -8,11 +14,17 @@ import { AuthService } from 'src/app/modules/auth/services/auth.service';
 })
 export class CheckoutComponent implements OnInit {
   user: any = null;
-  constructor(private authService: AuthService) { }
+  cartItems: Array<Cart> = []
+  cartTotal = 0;
+
+  constructor(private authService: AuthService, private msg: MessengerService, private store: Store<AppState>) { }
 
   ngOnInit(): void {
-    this.loadUser()
-    console.log(this.user)
+    this.authService.isLoggedIn()
+    console.log(this.authService.isLoggedIn())
+    this.handleSubscription()
+    this.loadCartItems()
+    this.calcCartTotal()
   }
 
   loadUser() {
@@ -21,5 +33,57 @@ export class CheckoutComponent implements OnInit {
     this.authService.getMe().subscribe(user => {
       this.user = user;
     });
+  }
+
+  handleSubscription() {
+    this.msg.getMsg().subscribe((product: Product) => {
+      this.addToCart(product)
+    })
+    this.msg.getMsg().subscribe((product: Product) => {
+      this.loadCartItems();
+    })
+  }
+
+  loadCartItems() {
+    this.store.select(store => store.shopping).subscribe(data => {
+      this.cartItems = data;
+    });
+  }
+
+  addToCart(product: Product) {
+    console.log(product.quantity)
+    let productincart = false;
+    for (let i in this.cartItems) {
+      if (this.cartItems[i]._id === product._id) {
+        console.log("true!")
+        productincart = true;
+        break;
+      }
+      console.log("break")
+    }
+    console.log("not break")
+    if (!productincart) {
+      console.log("true too!")
+      this.cartItems = [
+        new Cart(product._id, product.name, product.price, 1)
+      ]
+      this.store.dispatch(new AddToCart(product));
+    }
+
+
+    this.calcCartTotal()
+    //this.store.dispatch(new AddToCart(product));
+  }
+
+  calcCartTotal() {
+    this.cartTotal = 0;
+    this.cartItems.forEach(item => {
+      this.cartTotal += (item.price)
+    })
+  }
+
+  deleteItem(id: string) {
+    this.store.dispatch(new RemoveFromCart(id));
+    console.log(id)
   }
 }

@@ -37,7 +37,6 @@ export class ProductListComponent implements OnInit {
   }
 
   getProducts() {
-    console.log(this.filter);
     this.productService.getProducts(this.filter).subscribe((products) => {
       this.productList = products
     })
@@ -45,9 +44,7 @@ export class ProductListComponent implements OnInit {
 
   loadMoreProducts() {
     this.page++
-    console.log(this.filter);
     this.productService.getProducts(this.filter, this.page).subscribe((products) => {
-      console.log(typeof products)
       if (typeof products === 'object') {
         this.productList = [...this.productList, ...products]
       } else {
@@ -55,7 +52,6 @@ export class ProductListComponent implements OnInit {
       }
 
     })
-    console.log(this.productList);
   }
 
 }

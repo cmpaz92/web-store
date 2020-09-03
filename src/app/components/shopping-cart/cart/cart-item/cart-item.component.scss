@@ -1,0 +1,16 @@
+:host {
+    width: 80%;
+    display: inline-block;
+    .product-name,
+    .product-price {
+        width: 50%;
+        display: inline-block;
+    }
+    .product-name {
+        text-transform: capitalize;
+        font-weight: 500;
+        font-size: 1rem;
+    }
+    button.btn-danger {
+    }
+}

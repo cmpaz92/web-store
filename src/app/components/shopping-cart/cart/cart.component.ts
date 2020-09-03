@@ -13,21 +13,23 @@ import {Cart} from "../../../models/cart.model";
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
   animations: [
-    trigger('widthGrow', [
+    trigger('heightGrow', [
       state('closed', style({
-        width: 0,
-        opacity: '0'
+       // height: 30,
+        bottom: '0px'
+       // opacity: '0'
       })),
       state('open', style({
-        width: 400,
-        opacity: '100%'
+      //  height: '165px',
+        bottom: '185px'
+       // opacity: '100%'
       })),
       transition('* => *', animate(150))
     ]),
   ]
 })
 export class CartComponent implements OnInit {
-  cartshow = "closed";
+  cartShow = "closed";
   cartItems : Array<Cart> = []
   cartTotal = 0;
 
@@ -61,7 +63,8 @@ export class CartComponent implements OnInit {
   }
 
   toggleCart(): void {
-    (this.cartshow == "closed") ? this.cartshow = "open" : this.cartshow = "closed";
+    (this.cartShow == "closed") ? this.cartShow = "open" : this.cartShow = "closed";
+    console.log(this.cartShow);
   }
 
   addToCart(product: Product) {

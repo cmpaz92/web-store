@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         .pipe(
           switchMap(response => {
             // go to the dashboard after a successful login
-            return this.router.navigate(['/']);
+            return this.router.navigate(['/checkout']);
           }),
           catchError(error => {
             this.error = error;
