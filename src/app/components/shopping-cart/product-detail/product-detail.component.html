@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-4">
+    <img class="card-img-top" src="http://localhost:4000/{{product.media}}">
+  </div>
+  <div class="col-8">
+    <h3>{{product.name}}</h3>
+
+    <strong class="text-muted">$ {{product.price}}</strong>
+
+    <p>{{product.description | slice: 0:90}}</p>
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <button (click)="addToCart()" class="btn btn-sm btn-outline-secondary" type="button">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

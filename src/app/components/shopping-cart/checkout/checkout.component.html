@@ -1,0 +1,15 @@
+<!-- <div *ngIf="cartItems.length > 0">
+    <ul class="list-group">
+      <li *ngFor="let item of cartItems" class="list-group-item">
+        <app-cart-item [cartItem]="item"></app-cart-item>
+        <button (click)="deleteItem(item._id)" class="btn btn-danger" type="button">Delete</button>
+      </li>
+      <li class="list-group-item active">
+        Total: {{cartTotal}}
+      </li>
+    </ul>
+  </div> -->
+
+  <div *ngIf="user">
+      logged in
+  </div>

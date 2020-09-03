@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-header">
+    <strong>Filter</strong>
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="category">Category</label>
+      <select (change)="onChange($event.target.value)" class="custom-select" id="category" name="category">
+        <option disabled selected value> -- select an option --</option>
+        <option *ngFor="let i of categories" value="{{i._id}}">{{i.name}}</option>
+      </select>
+      <button (click)="clearCategory()" class="btn btn-primary btn-block btn-sm">Clear Filter</button>
+    </div>
+  </div>
+</div>

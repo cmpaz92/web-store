@@ -1,0 +1,17 @@
+<div *ngIf="productList.length > 0;then list else noitems"></div>
+<div class="container-fluid">
+
+  <ng-template #list>
+    <div class="row">
+      <div *ngFor="let product of productList" class="col-4">
+        <app-product-item [productItem]="product"></app-product-item>
+      </div>
+    </div>
+
+    <button (click)="loadMoreProducts()" *ngIf="more == true" class="">Load More</button>
+    <div *ngIf="more == false">No more results</div>
+  </ng-template>
+  <ng-template #noitems>No results.. Try again</ng-template>
+
+</div>
+
