@@ -9,6 +9,7 @@ export enum ActionTypes {
   LoadItems = '[Products] Load items from server',
   LoadSuccess = '[Products] Load success'
 }
+
 /*
 export class Login implements Action {
   readonly type = UserActionTypes.LOGIN;

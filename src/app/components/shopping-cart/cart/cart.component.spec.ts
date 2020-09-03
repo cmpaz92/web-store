@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CartComponent} from './cart.component';
-import { StoreModule } from '@ngrx/store';
+import {StoreModule} from '@ngrx/store';
 
 describe('CartComponent', () => {
   let component: CartComponent;

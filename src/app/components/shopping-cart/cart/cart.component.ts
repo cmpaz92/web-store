@@ -15,14 +15,14 @@ import {Cart} from "../../../models/cart.model";
   animations: [
     trigger('heightGrow', [
       state('closed', style({
-       // height: 30,
+        // height: 30,
         bottom: '0px'
-       // opacity: '0'
+        // opacity: '0'
       })),
       state('open', style({
-      //  height: '165px',
+        //  height: '165px',
         bottom: '185px'
-       // opacity: '100%'
+        // opacity: '100%'
       })),
       transition('* => *', animate(150))
     ]),
@@ -30,7 +30,7 @@ import {Cart} from "../../../models/cart.model";
 })
 export class CartComponent implements OnInit {
   cartShow = "closed";
-  cartItems : Array<Cart> = []
+  cartItems: Array<Cart> = []
   cartTotal = 0;
 
 
@@ -73,8 +73,8 @@ export class CartComponent implements OnInit {
     for (let i in this.cartItems) {
       if (this.cartItems[i]._id === product._id) {
         console.log("true!")
-          productincart = true;
-          break;
+        productincart = true;
+        break;
       }
       console.log("break")
     }
@@ -82,8 +82,8 @@ export class CartComponent implements OnInit {
     if (!productincart) {
       console.log("true too!")
       this.cartItems = [
-        new Cart(product._id, product.name,product.price,1)
-       ]
+        new Cart(product._id, product.name, product.price, 1)
+      ]
       this.store.dispatch(new AddToCart(product));
     }
 
