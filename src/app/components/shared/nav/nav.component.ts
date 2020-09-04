@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from 'src/app/modules/auth/services/auth.service';
-import {Observable, Subscription} from 'rxjs';
-import {Router} from '@angular/router';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-nav',
@@ -16,6 +15,7 @@ export class NavComponent implements OnInit {
   constructor(private authService: AuthService) {
     this.subscription = authService.isLoggedInObs().subscribe(message => {
       this.isLoggedIn = message
+
     });
     console.log("nav component");
     console.log(this.isLoggedIn)

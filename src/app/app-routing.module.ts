@@ -6,9 +6,10 @@ import {RegisterComponent} from "./modules/auth/pages/register/register.componen
 
 import {ShoppingCartComponent} from "./components/shopping-cart/shopping-cart.component";
 import {ProductDetailComponent} from "./components/shopping-cart/product-detail/product-detail.component";
-import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {CheckoutComponent} from './components/shopping-cart/checkout/checkout.component';
 import {LoggedInGuard} from './modules/auth/guards/logged-in/logged-in.guard';
+import {ProductFormComponent} from './components/shopping-cart/product-form/product-form.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
+    canActivate: [LoggedInGuard],
+  },
+  {
+    path: 'create',
+    component: ProductFormComponent,
     canActivate: [LoggedInGuard],
   },
   {path: '**', component: NotFoundComponent},

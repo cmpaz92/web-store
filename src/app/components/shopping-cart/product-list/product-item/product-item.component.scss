@@ -1,11 +1,29 @@
 :host {
+  .card-img-top {
+    position: relative;
 
+    img {
+      vertical-align: middle;
+      border-style: none;
+      width: 100%;
+      max-height: 280px;
+      overflow: hidden;
+    }
 
-  .card-img-top img {
-    vertical-align: middle;
-    border-style: none;
-    width: 100%;
-    max-height: 280px;
-    overflow: hidden;
+    .price {
+      position: absolute;
+      right: 0;
+      width: 70px;
+      height: 30px;
+      text-align: center;
+      background-color: rgba(255, 255, 255, .5);
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+
+  .card-text.name {
+    text-transform: capitalize;
+    font-weight: bold;
   }
 }

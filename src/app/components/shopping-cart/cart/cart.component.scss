@@ -6,6 +6,7 @@
   #cart-component {
     position: fixed;
     bottom: 0;
+    left: 0;
     height: 30px;
     width: 100%;
     z-index: 100;
@@ -14,12 +15,40 @@
   .cartButton {
     margin: auto;
     display: block;
+    padding: 2px 10px;
+    height: 30px;
+    width: 130px;
   }
 
   .cart-list-inner {
-    height: 160px;
-    border: 1px solid #333;
+    height: 120px;
+    border: 1px solid rgba(0, 0, 0, .125);
     background-color: white;
+
+    ul {
+      width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      height: 120px;
+
+      li {
+        position: relative;
+        text-align: right;
+
+        button {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+      }
+    }
+  }
+
+  li.list-group-item {
+    width: 220px;
+    height: 120px;
   }
 
   .empty-cart {

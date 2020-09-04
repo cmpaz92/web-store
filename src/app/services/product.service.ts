@@ -53,5 +53,14 @@ export class ProductService {
     console.log(this.http.get<Product>(url))
     return this.http.get<Product>(url)
   }
+
+  createProduct(product: any) {
+    console.log(product)
+    const url = `${apiUrl}/article/create`;
+    this.http.post(url, product).subscribe(data => {
+      console.log(data)
+    })
+    return
+  }
 }
 

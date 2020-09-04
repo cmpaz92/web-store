@@ -4,12 +4,12 @@
   </div>
   <div class="card-body">
     <div class="form-group">
-      <label for="category">Category</label>
+      <label for="category">Category Filter</label>
       <select (change)="onChange($event.target.value)" class="custom-select" id="category" name="category">
-        <option disabled selected value> -- select an option --</option>
+        <option disabled selected value> -- select a category --</option>
         <option *ngFor="let i of categories" value="{{i._id}}">{{i.name}}</option>
       </select>
-      <button (click)="clearCategory()" class="btn btn-primary btn-block btn-sm">Clear Filter</button>
     </div>
+    <button (click)="clearCategory()" class="btn btn-primary btn-block btn-sm">Clear Filter</button>
   </div>
 </div>
