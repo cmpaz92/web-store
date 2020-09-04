@@ -25,7 +25,7 @@ import {ProductDetailComponent} from './components/shopping-cart/product-detail/
 import {RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CheckoutComponent} from './components/shopping-cart/checkout/checkout.component';
-import {ProductFormComponent} from './product-form/product-form.component';
+import {ProductFormComponent} from './components/shopping-cart/product-form/product-form.component';
 
 @NgModule({
   declarations: [

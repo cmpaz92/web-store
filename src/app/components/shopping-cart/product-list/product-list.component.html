@@ -7,11 +7,18 @@
         <app-product-item [productItem]="product"></app-product-item>
       </div>
     </div>
-
-    <button (click)="loadMoreProducts()" *ngIf="more == true" class="">Load More</button>
-    <div *ngIf="more == false">No more results</div>
+    <div class="loadMore">
+      <button (click)="loadMoreProducts()" *ngIf="more == true" class="btn-primary btn">Load More</button>
+    </div>
+    <div *ngIf="more == false">
+      <div class="noResults">No more results</div>
+    </div>
   </ng-template>
-  <ng-template #noitems>No results.. Try again</ng-template>
+  <ng-template #noitems>
+    <div class="noResults">
+      No results.. Try again
+    </div>
+  </ng-template>
 
 </div>
 

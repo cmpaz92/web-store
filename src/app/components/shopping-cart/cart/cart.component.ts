@@ -21,7 +21,7 @@ import {Cart} from "../../../models/cart.model";
       })),
       state('open', style({
         //  height: '165px',
-        bottom: '185px'
+        bottom: '174px'
         // opacity: '100%'
       })),
       transition('* => *', animate(150))

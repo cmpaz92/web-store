@@ -1,14 +1,15 @@
 <app-nav></app-nav>
 
-<div class="container-fluid">
+<div class="container-fluid" id="container-wrap">
   <div class="row">
     <div class="col">
-      <router-outlet></router-outlet>
+      <router-outlet>
+      </router-outlet>
       <app-cart></app-cart>
     </div>
   </div>
 
-  <div class="footer row">
+  <div class="footer row" id="footer">
     <div class="col">
       <app-footer></app-footer>
     </div>

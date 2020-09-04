@@ -11,7 +11,7 @@
       <div *ngIf="cartItems.length === 0" class="empty-cart alert alert-info"><h5>Cart empty</h5></div>
 
       <div *ngIf="cartItems.length > 0">
-        <ul class="list-group list-group-horizontal">
+        <ul class="cart-list list-group list-group-horizontal">
           <li *ngFor="let item of cartItems" class="list-group-item">
             <app-cart-item [cartItem]="item"></app-cart-item>
             <button (click)="deleteItem(item._id)" class="btn btn-danger" type="button">Delete</button>

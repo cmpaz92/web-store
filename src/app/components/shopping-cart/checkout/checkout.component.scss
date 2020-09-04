@@ -4,4 +4,16 @@
   .checkout {
     //  background-color: #222;
   }
+
+  .title-name,
+  .title-price {
+    width: 40%;
+    display: inline-block;
+  }
+
+  .table-success {
+    & > td:first-child {
+      text-align: right;
+    }
+  }
 }
