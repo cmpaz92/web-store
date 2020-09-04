@@ -9,7 +9,6 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {TokenInterceptor} from './interceptors/token.interceptor';
 import {RegisterComponent} from './pages/register/register.component';
 
-console.log(HTTP_INTERCEPTORS);
 
 export function initApp(authService: AuthService) {
   return () => authService.initializeSession();

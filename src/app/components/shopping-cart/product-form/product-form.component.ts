@@ -40,7 +40,6 @@ export class ProductFormComponent implements OnInit {
   }
 
   onFileSelect(input) {
-    console.log(input.files);
     if (input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = (e: any) => {
@@ -64,7 +63,6 @@ export class ProductFormComponent implements OnInit {
       this.obj.category = category
       this.loading = true;
       this.error = null;
-      console.log(this.obj.media)
       //const product = new Product(0,name,description,price, category, media);
       this.productService.createProduct(this.obj)
     }

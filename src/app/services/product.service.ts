@@ -15,7 +15,6 @@ export class ProductService {
   }
 
   getProducts(category?: string, page: number = 1, limit: number = 0): Observable<Product[]> {
-    console.log(category == '');
     let params = []
     let url = `${apiUrl}/article/list`;
     if (category != '' && category != null) {
@@ -42,23 +41,17 @@ export class ProductService {
   }
 
   getProductbyId(id: string): Observable<Product> {
-    let a = this.http.get<Product>(apiUrl + '/article/' + id);
-    console.log(a);
-    return a;
+    return this.http.get<Product>(apiUrl + '/article/' + id);
   }
 
   getProduct(id: string): Observable<Product> {
-
     const url = `${apiUrl}/article/${id}`;
-    console.log(this.http.get<Product>(url))
     return this.http.get<Product>(url)
   }
 
   createProduct(product: any) {
-    console.log(product)
     const url = `${apiUrl}/article/create`;
     this.http.post(url, product).subscribe(data => {
-      console.log(data)
     })
     return
   }
