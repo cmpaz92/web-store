@@ -40,7 +40,6 @@ export class AuthService {
     ).pipe(
       tap(response => {
         // if the login was successful the server responds with an auth token which will be saved
-        console.log(response)
         this.setToken(response.token, response.user.username, response.user._id);
         this.isLoginSubject.next(true);
       }),
@@ -65,18 +64,11 @@ export class AuthService {
     ).pipe(
       tap(response => {
         // if the login was successful the server responds with an auth token which will be saved
-        console.log(response.token)
         this.setToken(response.token, response.user.username, response.user._id);
-        console.log('response', response.token);
         this.isLoginSubject.next(true);
       }),
       catchError(error => {
-        // if an error occurs it will be logged ans passed along as error
-        //console.log('error', error.error.msg);
-        // TODO: add error handling
         let errors = [];
-        console.log(error.error.errors);
-        console.log(error.error.msg);
         error.error.msg ? errors.push(error.error.msg) : errors.push(error.error.errors["0"].msg);
         console.log("errors" + errors);
         return throwError(errors);

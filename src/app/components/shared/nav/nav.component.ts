@@ -17,8 +17,6 @@ export class NavComponent implements OnInit {
       this.isLoggedIn = message
 
     });
-    console.log("nav component");
-    console.log(this.isLoggedIn)
   }
 
   logout() {

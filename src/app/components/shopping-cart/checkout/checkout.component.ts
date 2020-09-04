@@ -22,7 +22,6 @@ export class CheckoutComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.isLoggedIn()
-    console.log(this.authService.isLoggedIn())
     this.handleSubscription()
     this.loadCartItems()
     this.calcCartTotal()
@@ -52,19 +51,14 @@ export class CheckoutComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    console.log(product.quantity)
     let productincart = false;
     for (let i in this.cartItems) {
       if (this.cartItems[i]._id === product._id) {
-        console.log("true!")
         productincart = true;
         break;
       }
-      console.log("break")
     }
-    console.log("not break")
     if (!productincart) {
-      console.log("true too!")
       this.cartItems = [
         new Cart(product._id, product.name, product.price, 1)
       ]
@@ -85,6 +79,5 @@ export class CheckoutComponent implements OnInit {
 
   deleteItem(id: string) {
     this.store.dispatch(new RemoveFromCart(id));
-    console.log(id)
   }
 }
